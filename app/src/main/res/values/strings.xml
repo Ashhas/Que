@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Que</string>
+    <string name="quote_format">\"%1$s\"</string>
 </resources>
