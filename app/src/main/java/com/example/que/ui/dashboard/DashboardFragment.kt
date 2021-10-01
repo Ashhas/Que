@@ -11,19 +11,19 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.que.R
 import com.example.que.databinding.ActivityMainBinding
-import com.example.que.databinding.FragmentDashboardBinding
+import com.example.que.databinding.DashboardFragmentBinding
 import com.example.que.ui.QueActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
-    private lateinit var binding: FragmentDashboardBinding
+    private lateinit var binding: DashboardFragmentBinding
     private val dashboardViewModel by viewModel<DashboardViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        binding = DashboardFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -6,9 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.que.R
-import com.example.que.databinding.FragmentDashboardBinding
 import com.example.que.databinding.StorageFragmentBinding
-import com.example.que.ui.QueActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StorageFragment : Fragment() {
