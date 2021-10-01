@@ -29,7 +29,6 @@ class StorageFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-
         makeAppBarVisible()
     }
 
