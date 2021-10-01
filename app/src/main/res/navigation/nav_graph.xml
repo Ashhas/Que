@@ -13,6 +13,6 @@
     <fragment
         android:id="@+id/storageFragment"
         android:name="com.example.que.ui.storage.StorageFragment"
-        android:label="Storage"
+        android:label="Saved quotes"
         tools:layout="@layout/storage_fragment" />
 </navigation>
