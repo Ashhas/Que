@@ -1,4 +1,4 @@
-# Que
+# Que - Random Quotes
 
 :speech_balloon: Random Quotes app made with [Quotable API]. Get random quotes from a database with more then 2000 quotes and save them in the app.
 The main goal of this app is to practise with a couple libraries: [Room] for the database and [Navigation Component] for the navigation
