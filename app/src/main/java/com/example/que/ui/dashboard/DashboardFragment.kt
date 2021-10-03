@@ -33,12 +33,11 @@ class DashboardFragment : Fragment() {
         //Quote Textview
         dashboardViewModel.randomQuote.observe(viewLifecycleOwner, { randomQuote ->
             binding.tvQuote.text = getString(R.string.quote_format, randomQuote.content)
+
+            //Save quote in database
+            binding.btnNavigate.setOnClickListener {
+                dashboardViewModel.insertQuote(randomQuote)
+            }
         })
-
-        //Navigation Button
-        binding.btnNavigate.setOnClickListener {
-        }
     }
-
-
 }

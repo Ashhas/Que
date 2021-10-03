@@ -1,6 +1,7 @@
 package com.example.que
 
 import android.app.Application
+import com.example.que.di.databaseModule
 import com.example.que.di.networkModule
 import com.example.que.di.repositoryModule
 import com.example.que.di.viewModelModule
@@ -15,7 +16,7 @@ class QueApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@QueApplication)
-            modules(networkModule, viewModelModule, repositoryModule)
+            modules(networkModule, viewModelModule, repositoryModule, databaseModule)
         }
     }
 }

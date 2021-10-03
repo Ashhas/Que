@@ -1,6 +1,12 @@
 package com.example.que.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.RoomMasterTable
+
+@Entity(tableName = "quotes")
 data class Quote(
+    @PrimaryKey(autoGenerate = true) val tableId: Int,
     val _id: String,
     val author: String,
     val authorSlug: String,

@@ -1,6 +1,6 @@
 package com.example.que.di
 
-import com.example.que.data.QuoteService
+import com.example.que.network.QuoteService
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

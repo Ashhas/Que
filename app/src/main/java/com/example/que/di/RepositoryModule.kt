@@ -5,5 +5,5 @@ import org.koin.dsl.module
 
 
 val repositoryModule = module {
-    single { QuoteRepositoryImpl(get()) }
+    single { QuoteRepositoryImpl(api = get(), quoteDao = get()) }
 }

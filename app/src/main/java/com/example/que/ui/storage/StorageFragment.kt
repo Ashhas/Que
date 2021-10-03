@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.que.R
 import com.example.que.databinding.StorageFragmentBinding
+import com.example.que.ui.storage.adapter.QuotesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StorageFragment : Fragment() {
@@ -25,6 +28,11 @@ class StorageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        storageViewModel.allQuotesList.observe(viewLifecycleOwner, { quotesList ->
+            binding.rvStoredQuotes.layoutManager = GridLayoutManager(context, 2)
+            binding.rvStoredQuotes.adapter =
+                QuotesAdapter(context = context, quoteList = quotesList)
+        })
     }
 
     override fun onDestroy() {
