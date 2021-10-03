@@ -1,7 +1,6 @@
 package com.example.que.di
 
 import com.example.que.ui.dashboard.DashboardViewModel
-import com.example.que.ui.main.QueActivity
 import com.example.que.ui.main.QueViewModel
 import com.example.que.ui.storage.StorageViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
