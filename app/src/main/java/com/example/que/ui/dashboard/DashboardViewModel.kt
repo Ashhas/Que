@@ -25,7 +25,7 @@ class DashboardViewModel(
         }
     }
 
-    private fun getRandomQuote() {
+    fun getRandomQuote() {
         viewModelScope.launch {
             Log.d("DashboardViewModel", quoteRepo.getRandomQuote().toString())
             _randomQuote.value = quoteRepo.getRandomQuote()

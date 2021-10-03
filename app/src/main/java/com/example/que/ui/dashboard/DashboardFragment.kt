@@ -2,17 +2,10 @@ package com.example.que.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toolbar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.que.R
-import com.example.que.databinding.ActivityMainBinding
 import com.example.que.databinding.DashboardFragmentBinding
-import com.example.que.ui.QueActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment : Fragment() {
@@ -33,10 +26,17 @@ class DashboardFragment : Fragment() {
         //Quote Textview
         dashboardViewModel.randomQuote.observe(viewLifecycleOwner, { randomQuote ->
             binding.tvQuote.text = getString(R.string.quote_format, randomQuote.content)
+            binding.tvQuoteAuthor.text = randomQuote.author
+
+            //Reload quote
+            binding.iBtnReloadQuote.setOnClickListener {
+                dashboardViewModel.getRandomQuote()
+            }
 
             //Save quote in database
-            binding.btnNavigate.setOnClickListener {
+            binding.btnSave.setOnClickListener {
                 dashboardViewModel.insertQuote(randomQuote)
+                Toast.makeText(context, "Saved Quote!", Toast.LENGTH_SHORT).show()
             }
         })
     }

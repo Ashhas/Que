@@ -10,6 +10,8 @@ interface QuoteRepository {
 
     suspend fun getRandomQuote(): Quote
 
+    suspend fun deleteAllQuotes()
+
     fun getStoredQuotes(): LiveData<List<Quote>>
 
 }

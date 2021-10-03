@@ -2,5 +2,6 @@
     <string name="app_name">Que</string>
     <string name="quote_format">\"%1$s\"</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_storage_menu_item">Storage</string>
+    <string name="btn_save_quote_title">Save Quote</string>
 </resources>

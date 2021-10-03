@@ -4,9 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.que.R
 import com.example.que.data.model.Quote
 import com.example.que.databinding.ListQuoteItemBinding
-import com.example.que.databinding.StorageFragmentBinding
 
 class QuotesAdapter(private val context: Context?, private val quoteList: List<Quote>) :
     RecyclerView.Adapter<QuotesAdapter.QuotesViewHolder>() {
@@ -32,7 +32,8 @@ class QuotesAdapter(private val context: Context?, private val quoteList: List<Q
     inner class QuotesViewHolder(private val itemBinding: ListQuoteItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(quote: Quote) {
-            itemBinding.tvQuoteContent.text = quote.content
+            itemBinding.tvQuoteContent.text =
+                context?.getString(R.string.quote_format, quote.content)
             itemBinding.tvQuoteAuthor.text = quote.author
         }
     }

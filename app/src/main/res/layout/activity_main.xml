@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.QueActivity">
+    tools:context=".ui.main.QueActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/mainToolbar"
@@ -16,10 +16,10 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host"
-        android:layout_below="@+id/mainToolbar"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/mainToolbar"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 

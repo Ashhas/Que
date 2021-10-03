@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Que"
         android:fullBackupContent="@xml/backup_descriptor">
         <activity
-            android:name=".ui.QueActivity"
+            android:name=".ui.main.QueActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

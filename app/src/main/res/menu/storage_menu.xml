@@ -3,8 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/storageFragment"
-        android:title="Storage"
+        android:icon="@drawable/ic_baseline_apps_24"
         android:menuCategory="secondary"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_baseline_apps_24"/>
+        android:title="@string/title_storage_menu_item"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/deleteQuotes"
+        android:icon="@drawable/ic_baseline_delete_forever_24"
+        android:menuCategory="secondary"
+        android:visible="false"
+        app:showAsAction="always" />
 </menu>

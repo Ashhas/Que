@@ -18,6 +18,11 @@ class QuoteRepositoryImpl(private val api: QuoteService, private val quoteDao: Q
         return api.getRandomImage()
     }
 
+    //Delete all quotes
+    override suspend fun deleteAllQuotes() {
+        quoteDao.deleteAllQuotes()
+    }
+
     //Get stored quotes
     override fun getStoredQuotes(): LiveData<List<Quote>> {
         return quoteDao.getAllQuotes()

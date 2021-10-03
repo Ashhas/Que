@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.que.R
 import com.example.que.databinding.StorageFragmentBinding
 import com.example.que.ui.storage.adapter.QuotesAdapter
@@ -22,7 +21,8 @@ class StorageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = StorageFragmentBinding.inflate(inflater, container, false)
-        makeAppBarInvisible()
+        makeStorageButtonInvisible()
+        makeDeleteButtonVisible()
         return binding.root
     }
 
@@ -37,21 +37,37 @@ class StorageFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        makeAppBarVisible()
+        makeStorageButtonVisible()
+        makeDeleteButtonInvisible()
     }
 
-    private fun makeAppBarVisible() {
+    private fun makeStorageButtonVisible() {
         val toolBar =
             requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.mainToolbar)
         val item = toolBar.menu.findItem(R.id.storageFragment)
         item.isVisible = true
     }
 
-    private fun makeAppBarInvisible() {
+    private fun makeStorageButtonInvisible() {
         val toolBar =
             requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.mainToolbar)
         val item = toolBar.menu.findItem(R.id.storageFragment)
         item.isVisible = false
     }
+
+    private fun makeDeleteButtonVisible() {
+        val toolBar =
+            requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.mainToolbar)
+        val item = toolBar.menu.findItem(R.id.deleteQuotes)
+        item.isVisible = true
+    }
+
+    private fun makeDeleteButtonInvisible() {
+        val toolBar =
+            requireActivity().findViewById<androidx.appcompat.widget.Toolbar>(R.id.mainToolbar)
+        val item = toolBar.menu.findItem(R.id.deleteQuotes)
+        item.isVisible = false
+    }
+
 
 }

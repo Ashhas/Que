@@ -3,7 +3,6 @@ package com.example.que.data
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.que.data.model.Quote
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuoteDao {
@@ -17,7 +16,7 @@ interface QuoteDao {
     @Update
     suspend fun updateQuote(quote: Quote)
 
-    @Delete
-    suspend fun deleteQuote(quote: Quote)
+    @Query("DELETE FROM quotes")
+    suspend fun deleteAllQuotes()
 
 }
