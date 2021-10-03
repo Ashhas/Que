@@ -1,10 +1,10 @@
 package com.example.que.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -13,7 +13,6 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.que.R
 import com.example.que.databinding.ActivityMainBinding
-import com.example.que.ui.dashboard.DashboardViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class QueActivity : AppCompatActivity() {

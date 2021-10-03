@@ -2,7 +2,6 @@ package com.example.que.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import androidx.room.RoomMasterTable
 
 @Entity(tableName = "quotes")
 data class Quote(
