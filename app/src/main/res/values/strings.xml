@@ -5,4 +5,6 @@
     <string name="title_storage_menu_item">Storage</string>
     <string name="btn_save_quote_title">Save Quote</string>
     <string name="load_a_quote">Load a quote</string>
+    <string name="save_a_quote">Save a quote</string>
+    <string name="share_a_quote">Share a quote</string>
 </resources>
