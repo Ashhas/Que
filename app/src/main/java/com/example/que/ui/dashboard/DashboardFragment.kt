@@ -1,8 +1,11 @@
 package com.example.que.ui.dashboard
 
 import android.os.Bundle
-import android.view.*
-import android.view.View.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.que.R
@@ -14,8 +17,8 @@ class DashboardFragment : Fragment() {
     private val dashboardViewModel by viewModel<DashboardViewModel>()
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         binding = DashboardFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -61,6 +64,7 @@ class DashboardFragment : Fragment() {
             dashboardViewModel.getRandomQuote()
         } else {
             showNoInternetLayout()
+            Toast.makeText(context, "Still no connection", Toast.LENGTH_SHORT).show()
         }
     }
 
