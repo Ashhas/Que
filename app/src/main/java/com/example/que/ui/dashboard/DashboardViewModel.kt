@@ -1,8 +1,13 @@
 package com.example.que.ui.dashboard
 
 import android.app.Application
+import android.content.Context.CONNECTIVITY_SERVICE
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
+import android.os.Build
 import android.util.Log
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,11 +21,13 @@ class DashboardViewModel(
         private val appContext: Application
 ) : ViewModel() {
 
-    private val _randomQuote = MutableLiveData<Quote>()
+    private var _randomQuote = MutableLiveData<Quote>()
     val randomQuote: LiveData<Quote> get() = _randomQuote
 
     init {
-        getRandomQuote()
+        if (isNetworkAvailable() == true) {
+            getRandomQuote()
+        }
     }
 
     fun getRandomQuote() {
@@ -47,5 +54,17 @@ class DashboardViewModel(
         shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
         appContext.startActivity(shareIntent)
+    }
+
+    fun isNetworkAvailable(): Boolean? {
+        val cm = appContext.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val activeNetwork = cm.activeNetwork
+            val capabilities = cm.getNetworkCapabilities(activeNetwork)
+            capabilities?.hasCapability(NET_CAPABILITY_INTERNET)
+        } else {
+            cm.activeNetworkInfo?.isConnected
+        }
     }
 }

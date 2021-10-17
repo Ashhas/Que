@@ -2,6 +2,7 @@ package com.example.que.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
+import android.view.View.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.que.R
@@ -13,8 +14,8 @@ class DashboardFragment : Fragment() {
     private val dashboardViewModel by viewModel<DashboardViewModel>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         binding = DashboardFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -23,16 +24,13 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Select Starting Layout
+        checkInternetConnection()
+
         //Quote Textview
         dashboardViewModel.randomQuote.observe(viewLifecycleOwner, { randomQuote ->
             binding.tvQuote.text = getString(R.string.quote_format, randomQuote.content)
             binding.tvQuoteAuthor.text = randomQuote.author
-
-            //Reload quote
-            binding.btnReloadQuote.setOnClickListener {
-                dashboardViewModel.getRandomQuote()
-                Toast.makeText(context, "New Quote!", Toast.LENGTH_SHORT).show()
-            }
 
             //Save quote in database
             binding.btnSave.setOnClickListener {
@@ -41,9 +39,47 @@ class DashboardFragment : Fragment() {
             }
 
             //Share quote
-            binding.btnShare.setOnClickListener{
+            binding.btnShare.setOnClickListener {
                 dashboardViewModel.shareQuote(randomQuote)
             }
         })
+
+        //Reload quote
+        binding.btnReloadQuote.setOnClickListener {
+            dashboardViewModel.getRandomQuote()
+            Toast.makeText(context, "New Quote!", Toast.LENGTH_SHORT).show()
+        }
+
+        //Retry quote request
+        binding.btnRetry.setOnClickListener {
+            retryQuoteRequest()
+        }
+    }
+
+    private fun retryQuoteRequest() {
+        if (dashboardViewModel.isNetworkAvailable() == true) {
+            showDefaultLayout()
+            dashboardViewModel.getRandomQuote()
+        } else {
+            showNoInternetLayout()
+        }
+    }
+
+    private fun checkInternetConnection() {
+        if (dashboardViewModel.isNetworkAvailable() == true) {
+            showDefaultLayout()
+        } else {
+            showNoInternetLayout()
+        }
+    }
+
+    private fun showDefaultLayout() {
+        binding.layoutDefault.visibility = VISIBLE
+        binding.noInternetLayout.visibility = GONE
+    }
+
+    private fun showNoInternetLayout() {
+        binding.layoutDefault.visibility = GONE
+        binding.noInternetLayout.visibility = VISIBLE
     }
 }

@@ -7,4 +7,6 @@
     <string name="load_a_quote">Load a quote</string>
     <string name="save_a_quote">Save a quote</string>
     <string name="share_a_quote">Share a quote</string>
+    <string name="oops_looks_like_there_is_no_internet_connection">Oops, looks like there is no internet connection</string>
+    <string name="try_again">Try Again</string>
 </resources>
