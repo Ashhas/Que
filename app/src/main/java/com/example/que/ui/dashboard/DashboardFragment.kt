@@ -30,7 +30,7 @@ class DashboardFragment : Fragment() {
         //Select Starting Layout
         checkInternetConnection()
 
-        //Quote Textview
+        //Quote Observer
         dashboardViewModel.randomQuote.observe(viewLifecycleOwner, { randomQuote ->
             binding.tvQuote.text = getString(R.string.quote_format, randomQuote.content)
             binding.tvQuoteAuthor.text = randomQuote.author
@@ -38,7 +38,7 @@ class DashboardFragment : Fragment() {
             //Save quote in database
             binding.btnSave.setOnClickListener {
                 dashboardViewModel.insertQuote(randomQuote)
-                Toast.makeText(context, "Saved Quote!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, R.string.saved_quote, Toast.LENGTH_SHORT).show()
             }
 
             //Share quote
@@ -49,12 +49,20 @@ class DashboardFragment : Fragment() {
 
         //Reload quote
         binding.btnReloadQuote.setOnClickListener {
-            dashboardViewModel.getRandomQuote()
+            reloadQuote()
         }
 
         //Retry quote request
         binding.btnRetry.setOnClickListener {
             retryQuoteRequest()
+        }
+    }
+
+    private fun reloadQuote() {
+        if (dashboardViewModel.isNetworkAvailable() == true) {
+            dashboardViewModel.getRandomQuote()
+        } else {
+            Toast.makeText(context, R.string.no_internet_after_reload, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -64,7 +72,7 @@ class DashboardFragment : Fragment() {
             dashboardViewModel.getRandomQuote()
         } else {
             showNoInternetLayout()
-            Toast.makeText(context, "Still no connection", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, R.string.no_internet_after_reload, Toast.LENGTH_SHORT).show()
         }
     }
 

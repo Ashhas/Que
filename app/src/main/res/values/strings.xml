@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Que</string>
     <string name="quote_format">\"%1$s\"</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="title_storage_menu_item">Storage</string>
     <string name="btn_save_quote_title">Save Quote</string>
     <string name="load_a_quote">Load a quote</string>
@@ -9,4 +8,6 @@
     <string name="share_a_quote">Share a quote</string>
     <string name="oops_looks_like_there_is_no_internet_connection">Oops, looks like there is no internet connection</string>
     <string name="try_again">Try Again</string>
+    <string name="saved_quote">Saved Quote!</string>
+    <string name="no_internet_after_reload">Still no network connection</string>
 </resources>
