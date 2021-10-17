@@ -29,14 +29,20 @@ class DashboardFragment : Fragment() {
             binding.tvQuoteAuthor.text = randomQuote.author
 
             //Reload quote
-            binding.iBtnReloadQuote.setOnClickListener {
+            binding.btnReloadQuote.setOnClickListener {
                 dashboardViewModel.getRandomQuote()
+                Toast.makeText(context, "New Quote!", Toast.LENGTH_SHORT).show()
             }
 
             //Save quote in database
             binding.btnSave.setOnClickListener {
                 dashboardViewModel.insertQuote(randomQuote)
                 Toast.makeText(context, "Saved Quote!", Toast.LENGTH_SHORT).show()
+            }
+
+            //Share quote
+            binding.btnShare.setOnClickListener{
+                dashboardViewModel.shareQuote(randomQuote)
             }
         })
     }
