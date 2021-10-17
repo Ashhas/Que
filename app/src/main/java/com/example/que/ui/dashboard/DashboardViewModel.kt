@@ -7,7 +7,6 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.os.Build
 import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +14,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.que.data.model.Quote
 import com.example.que.repository.QuoteRepositoryImpl
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class DashboardViewModel(
         private val quoteRepo: QuoteRepositoryImpl,
@@ -24,6 +24,9 @@ class DashboardViewModel(
     private var _randomQuote = MutableLiveData<Quote>()
     val randomQuote: LiveData<Quote> get() = _randomQuote
 
+    //Log TAG
+    val TAG = "DashboardViewModel"
+
     init {
         if (isNetworkAvailable() == true) {
             getRandomQuote()
@@ -31,9 +34,15 @@ class DashboardViewModel(
     }
 
     fun getRandomQuote() {
-        viewModelScope.launch {
-            Log.d("DashboardViewModel", quoteRepo.getRandomQuote().toString())
-            _randomQuote.value = quoteRepo.getRandomQuote()
+        if (isNetworkAvailable() == true) {
+            viewModelScope.launch {
+                Log.d(TAG, quoteRepo.getRandomQuote().toString())
+                try {
+                    _randomQuote.value = quoteRepo.getRandomQuote()
+                } catch (exception: Exception) {
+                    Log.e(TAG, exception.message.toString())
+                }
+            }
         }
     }
 

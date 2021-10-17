@@ -47,7 +47,6 @@ class DashboardFragment : Fragment() {
         //Reload quote
         binding.btnReloadQuote.setOnClickListener {
             dashboardViewModel.getRandomQuote()
-            Toast.makeText(context, "New Quote!", Toast.LENGTH_SHORT).show()
         }
 
         //Retry quote request
